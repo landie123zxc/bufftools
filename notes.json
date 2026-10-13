@@ -1,7 +1,8 @@
 {
-  "version": "2.7.37",
+  "version": "2.7.38",
   "hello": "Hello",
   "added": [
+    "Key gate: keys.json on GitHub + prompt / BuffToolsKey / bufftools_key.txt",
     "Value: Honey Mark/Md, Token Link/Fp, Pepper Mul, Bar+Ar; HB flags and ≤N cards",
     "Value: sticker Book ID-tuples + StickerTypes:GetByID/DisplayName with self; sum HB lines",
     "Value: stickers from richest getgc stats; HB meet-or-beat; pot no longer overrides HB",
