@@ -1,37 +1,5 @@
 {
-  "version": "2.7.39",
-  "hello": "Hello",
-  "added": [
-    "Lua armor: shuffled chunks + dual XOR + key checksum (encode_bt.py)",
-    "Key gate: keys.json on GitHub + prompt / BuffToolsKey / bufftools_key.txt",
-    "Value: Honey Mark/Md, Token Link/Fp, Pepper Mul, Bar+Ar; HB flags and ≤N cards",
-    "Value: sticker Book ID-tuples + StickerTypes:GetByID/DisplayName with self; sum HB lines",
-    "Value: stickers from richest getgc stats; HB meet-or-beat; pot no longer overrides HB",
-    "Value: RandomPools/WaxTypes via require+getgc; wax HB/ability decode",
-    "Value: decode beequip S seed via GenerateModifiers (HB / ability / wax)",
-    "Value: vouchers/all sticker groups; fuzzy name match; T-as-id + field() resolve",
-    "No value fetch/getgc on inject — Scan value only (fixes freeze)",
-    "Value: hard-ban Debug Wax/Turpentine/Services; allowlist sticker groups only",
-    "Value: stickers only from Stickers.Book/Inbox/Stack validated by StickerTypes",
-    "Value: no Services phantoms (Debug Wax/Turpentine), no GUI sticker scrape",
-    "Value: read Beequips via field() not rawget; pick getgc stats with real Storage/Equips",
-    "Value scan reads Stickers Book/Inbox/Stack and Beequips Storage+Honeycomb Equips by T/Q",
-    "Beequip potential stars from Q via round(Q*5); prices match bssm ≤N★ / N★ Pot cards",
-    "FPS tab: delete shit keeps Pepper Patch and Wind Shrine",
-    "Sky is removed on inject",
-    "Value tab with Scan value",
-    "Other tab shows how many boosts you have",
-    "Double Morph plays when Bear Morph hits x2",
-    "Precise circles, hidden Honey tokens, far flames hidden",
-    "Four hotbar auto-press chips, gear sets the key and interval",
-    "Boost assistance tab",
-    "Menu icon is larger",
-    "Enable boost rolls Pepper from the inventory and keeps it up",
-    "Scorch above 49T plays 49t, above 99T plays 99t",
-    "Show info tab can hide the flag, city, FPS and ping"
-  ],
-  "removed": [
-    "Version number in the menu title",
-    "Enable boost no longer turns on the hotbar chips"
-  ]
+  "hello": "",
+  "added": [],
+  "removed": []
 }
