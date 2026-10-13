@@ -1,7 +1,8 @@
 {
-  "version": "2.7.32",
+  "version": "2.7.33",
   "hello": "Hello",
   "added": [
+    "Value: decode beequip S seed via GenerateModifiers (HB / ability / wax)",
     "Value: vouchers/all sticker groups; fuzzy name match; T-as-id + field() resolve",
     "No value fetch/getgc on inject — Scan value only (fixes freeze)",
     "Value: hard-ban Debug Wax/Turpentine/Services; allowlist sticker groups only",
