@@ -1,7 +1,8 @@
 {
-  "version": "2.7.31",
+  "version": "2.7.32",
   "hello": "Hello",
   "added": [
+    "Value: vouchers/all sticker groups; fuzzy name match; T-as-id + field() resolve",
     "No value fetch/getgc on inject — Scan value only (fixes freeze)",
     "Value: hard-ban Debug Wax/Turpentine/Services; allowlist sticker groups only",
     "Value: stickers only from Stickers.Book/Inbox/Stack validated by StickerTypes",
