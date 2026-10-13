@@ -1,1 +1,68 @@
-{"keys":{"BUFF-W1-D9ED52B7-79C1":{"expires":1792478467,"note":"week key 6","claimed":false},"BUFF-W1-2E8BC238-BC9D":{"expires":1792478467,"note":"week key 10","claimed":false},"BUFF-W1-A3BC1CF0-505B":{"hwid":"F9C022D8-86EC-4AEE-ABD0-C3176A6C9752","note":"week key 3","claimed":true,"claimedAt":1791876554,"expires":1792478467,"claimedUserId":1929151281},"BUFF-W1-FD30A9CF-0A2D":{"hwid":"0C22141A-9902-4B73-A4EE-3C6C7AC525D5","note":"week key 9","claimed":true,"claimedAt":1791887328,"expires":1792478467,"claimedUserId":11166860679},"BUFF-W1-7982BF42-A8EC":{"hwid":"2CDF528C-0359-4CDE-8F31-9BE992341BBF","note":"week key 5","claimed":true,"claimedUserId":8127752782,"expires":1792478467,"claimedAt":1791884137},"BUFF-W1-215A74D2-640C":{"hwid":"F7406B8C-4958-4529-BED2-C2C2A3A0304D","note":"week key 2","claimed":true,"claimedUserId":4707106144,"expires":1792478467,"claimedAt":1791889645},"BUFF-W1-F81D80A3-F0D7":{"hwid":"344CF819-E27C-42AF-B032-ED8B415F0429","note":"week key 1","claimed":true,"claimedUserId":5092353168,"expires":1792478467,"claimedAt":1791874685},"BUFF-W1-17F4CD21-E6D6":{"expires":1792478467,"note":"week key 7","claimed":false},"BUFF-W1-23E03DCC-77C8":{"expires":1792478467,"note":"week key 4","claimed":false},"BUFF-W1-E0D48D5C-1D44":{"expires":1792478467,"note":"week key 8","claimed":false}},"meta":{"note":"7-day HWID-bind on first activate","expires_unix":1792478467}}
+{
+  "keys": {
+    "BUFF-W1-F81D80A3-F0D7": {
+      "note": "week key 1",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-215A74D2-640C": {
+      "note": "week key 2",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-A3BC1CF0-505B": {
+      "note": "week key 3",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-23E03DCC-77C8": {
+      "note": "week key 4",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-7982BF42-A8EC": {
+      "note": "week key 5",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-D9ED52B7-79C1": {
+      "note": "week key 6",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-17F4CD21-E6D6": {
+      "note": "week key 7",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-E0D48D5C-1D44": {
+      "note": "week key 8",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-FD30A9CF-0A2D": {
+      "note": "week key 9",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    },
+    "BUFF-W1-2E8BC238-BC9D": {
+      "note": "week key 10",
+      "expires": 1792478467,
+      "claimed": false,
+      "hwid": null
+    }
+  },
+  "meta": {
+    "expires_unix": 1792478467,
+    "note": "7-day HWID-bind on first activate"
+  }
+}
