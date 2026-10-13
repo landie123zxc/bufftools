@@ -20,7 +20,7 @@
     "Menu icon is larger",
     "Enable boost rolls Pepper from the inventory and keeps it up",
     "Scorch above 49T plays 49t, above 99T plays 99t",
-    "Show info tab can hide the flag, city, FPS and ping",
+    "Show info tab can hide the flag, city, FPS and ping"
   ],
   "removed": [
     "Version number in the menu title",
