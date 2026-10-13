@@ -1,7 +1,8 @@
 {
-  "version": "2.7.35",
+  "version": "2.7.36",
   "hello": "Hello",
   "added": [
+    "Value: sticker Book ID-tuples + StickerTypes:GetByID/DisplayName with self; sum HB lines",
     "Value: stickers from richest getgc stats; HB meet-or-beat; pot no longer overrides HB",
     "Value: RandomPools/WaxTypes via require+getgc; wax HB/ability decode",
     "Value: decode beequip S seed via GenerateModifiers (HB / ability / wax)",
