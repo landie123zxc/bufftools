@@ -61,12 +61,18 @@ end
 
 -- same naming rule as the BuffTools Stats tab
 local function srcKey(g)
-  if type(g) ~= "table" then return "(no tag)" end
+  if type(g) ~= "table" or #g == 0 then return "(no tag)" end
   local n = #g
-  local last = g[n]
-  if type(last) ~= "string" then return "(no tag)" end
-  if (last == "Tool" or last == "Bomb") and n >= 2 and type(g[1]) == "string" then return last .. " = " .. g[1] end
-  return last
+  for i = 1, n do
+    if g[i] == "Tool" and type(g[1]) == "string" and g[1] ~= "Tool" then return "Tool = " .. g[1] end
+  end
+  if g[1] == "Bomb" and type(g[2]) == "string" then return "Bomb = " .. g[2] end
+  if g[n] == "Bee Gather" then return "Bee Gather" end
+  for i = 1, n do
+    local s = g[i]
+    if type(s) == "string" and s ~= "Bee" and not s:find(" Ability$") then return s end
+  end
+  return "(no tag)"
 end
 local function sigOf(g)
   if type(g) ~= "table" then return "(no tag)" end
@@ -89,6 +95,7 @@ local byColor, byZone = {}, {}
 local critR, critN, allN = 0, 0, 0
 local pathSeen = {}      -- CacheResetStat path -> {n, sample}
 local smileN, smileR = 0, 0
+local smileBursts = {}   -- one entry per group of smile Give events: {t, n, R, dup}
 local otherSamples = {}  -- Give payloads of classes other than Pollen / Honey
 
 local function bump(tbl, k, amt)
@@ -132,6 +139,17 @@ local function onGive(d)
         if type(v) == "string" and (v:lower():find("smile", 1, true) or v:find("☺", 1, true)) then
           smileN = smileN + 1
           smileR = smileR + R
+          -- group the burst of Give events into token picks (gap > 1.5s = new pick)
+          local now = os.clock()
+          local last = smileBursts[#smileBursts]
+          if not last or now - last.lastT > 1.5 then
+            last = { t = now - t0, lastT = now, n = 0, R = 0, dup = 0 }
+            smileBursts[#smileBursts + 1] = last
+          end
+          last.lastT = now
+          last.n = last.n + 1
+          last.R = last.R + R
+          for _, w in pairs(d.g) do if w == "Duped Ability" then last.dup = last.dup + 1 end end
           break
         end
       end
@@ -232,6 +250,25 @@ local function lifetimeScan()
             for _, e in ipairs(names) do
               log(string.format("    %-40s entries=%d%s", e.k, e.cnt, e.abil and "  <== has ability names" or ""))
             end
+            -- pollen-like tables: expand recursively (lifetime pollen by source / ability lives somewhere in here)
+            local function expand(label, tb, depth)
+              if depth > 3 then return end
+              local rows, sum, subs = {}, 0, {}
+              for k, v in pairs(tb) do
+                if type(v) == "number" then rows[#rows + 1] = { tostring(k), v } sum = sum + v
+                elseif type(v) == "table" then subs[#subs + 1] = { tostring(k), v } end
+              end
+              table.sort(rows, function(a, b) return a[2] > b[2] end)
+              log(string.format("  [%s] %d numbers, %d tables, sum=%s", label, #rows, #subs, fmtN(sum)))
+              for i = 1, math.min(#rows, depth == 1 and 14 or 40) do
+                log(string.format("      %-34s %12s  %5.1f%%", rows[i][1], fmtN(rows[i][2]), sum > 0 and rows[i][2] / sum * 100 or 0))
+              end
+              table.sort(subs, function(a, b) return a[1] < b[1] end)
+              for _, s in ipairs(subs) do expand(label .. " > " .. s[1], s[2], depth + 1) end
+            end
+            for _, nm in ipairs({ "Pollen", "ChallengePollen", "Nectar", "Goo" }) do
+              if type(tot[nm]) == "table" then expand("Totals." .. nm, tot[nm], 1) end
+            end
             for _, e in ipairs(names) do
               if e.abil then
                 local rows, sum = {}, 0
@@ -286,7 +323,10 @@ local function buildReport()
       e.n, fmtN((e.A or 0) / e.n), fmtN((e.c or 0) / e.n), string.format("%.0f%%", (e.crit or 0) / e.n * 100)))
   end
   L(string.format("  crits overall: %d/%d hits, %.1f%% of pollen", critN, allN, polTotal > 0 and critR / polTotal * 100 or 0))
-  L(string.format("  smile-tagged: %d hits, %s pollen", smileN, fmtN(smileR)))
+  L(string.format("  smile-tagged: %d hits, %s pollen, grouped into %d burst(s):", smileN, fmtN(smileR), #smileBursts))
+  for i, b in ipairs(smileBursts) do
+    L(string.format("    burst #%d at %.1fs: %d hits (%d of them 'Duped Ability'), pollen %s", i, b.t, b.n, b.dup, fmtN(b.R)))
+  end
 
   L("=== POLLEN BY FULL TAG LIST (g) - shows what the tags mean / how to split 'Bee Gather (other)' etc. ===")
   local sg = sortedKeys(polBySig)
@@ -444,6 +484,7 @@ button("Save", 82, 128, 66, Color3.fromRGB(60, 90, 140), saveReport)
 button("Reset data", 154, 128, 136, Color3.fromRGB(100, 80, 140), function()
   classes, polBySrc, polBySig, honBySrc, fields, byColor, byZone, pathSeen, otherSamples = {}, {}, {}, {}, {}, {}, {}, {}, {}
   polTotal, honTotal, critR, critN, allN, smileN, smileR = 0, 0, 0, 0, 0, 0, 0
+  smileBursts = {}
   t0 = os.clock()
   flash("counters reset")
 end)
