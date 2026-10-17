@@ -61,6 +61,7 @@ end
 
 -- same naming rule as the BuffTools Stats tab
 local function srcKey(g)
+  if type(g) == "string" and g ~= "" then return g end -- g can be a plain string, e.g. "Star Saw"
   if type(g) ~= "table" or #g == 0 then return "(no tag)" end
   local n = #g
   for i = 1, n do
